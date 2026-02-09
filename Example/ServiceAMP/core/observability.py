@@ -14,11 +14,8 @@ from opentelemetry.sdk.resources import Resource
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 
-from core.log.log import (
-    logger,
-    START_MODULE_MESSAGE,
-    str_object_is_created,
-)
+from core.log.log import logger, START_MODULE_MESSAGE, str_object_is_created
+
 
 
 MODULE_DESCRIPTION = "This module configures telemetry for the application"
@@ -70,7 +67,7 @@ def instrument_app(app: FastAPI) -> None:
 
 def main() -> None:
     logger.info(START_MODULE_MESSAGE + str(__file__))
-    logger.info("Module description: " + MODULE_DESCRIPTION)
+    logger.info(MODULE_DESCRIPTION)
     logger.info(str_object_is_created(setup_telemetry))
     logger.info(str_object_is_created(instrument_app))
 
