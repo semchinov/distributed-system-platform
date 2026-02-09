@@ -1,9 +1,20 @@
+# /api/messages.py
+
 from __future__ import annotations
 
 import httpx
 from fastapi import APIRouter, Response
 
-from ServiceAMP.config.settings import settings
+from config.settings import settings
+from core.log.log import (
+    logger,
+    START_MODULE_MESSAGE,
+    str_object_is_created,
+)
+
+
+MODULE_DESCRIPTION = "This module defines API endpoints for sending messages and simulating errors"
+
 
 router = APIRouter()
 
@@ -19,3 +30,17 @@ async def message_a() -> Response:
 @router.post("/api/error")
 async def error(code: int = 500) -> Response:
     return Response(status_code=code)
+
+
+def main() -> None:
+    logger.info(START_MODULE_MESSAGE + str(__file__))
+    logger.info(MODULE_DESCRIPTION)
+    logger.info(str_object_is_created(router))
+
+
+if __name__ != "__main__":
+    main()
+
+
+if __name__ == "__main__":
+    main()
