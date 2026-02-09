@@ -14,7 +14,7 @@ from opentelemetry.sdk.resources import Resource
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 
-from core.log.log import (
+from ServiceAMP.core.log.log import (
     logger,
     START_MODULE_MESSAGE,
     str_object_is_created,
