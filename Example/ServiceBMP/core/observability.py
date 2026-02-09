@@ -7,7 +7,6 @@ from opentelemetry import metrics, trace
 from opentelemetry.exporter.otlp.proto.grpc.metric_exporter import OTLPMetricExporter
 from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
 from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
-from opentelemetry.instrumentation.httpx import HTTPXClientInstrumentor
 from opentelemetry.sdk.metrics import MeterProvider
 from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
 from opentelemetry.sdk.resources import Resource
@@ -56,13 +55,12 @@ def setup_telemetry(endpoint: str, service_name: str) -> None:
 
 def instrument_app(app: FastAPI) -> None:
     """
-    Attach OTEL instrumentation to FastAPI and HTTPX.
-    Присоединяет инструментирование OTEL к FastAPI и HTTPX.
+    Attach OTEL instrumentation to FastAPI.
+    Присоединяет инструментирование OTEL к FastAPI.
         :parameter app (FastAPI) - FastAPI application to instrument
         :returns None
     """
     FastAPIInstrumentor.instrument_app(app)
-    HTTPXClientInstrumentor().instrument()
 
 
 def main() -> None:
