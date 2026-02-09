@@ -8,6 +8,7 @@ from loguru import logger
 from typing import Any
 
 
+
 MODULE_DESCRIPTION = "This module stores logger settings and configurations"
 
 
@@ -78,10 +79,10 @@ def str_object_is_created(created_object: Any) -> str:
 setup_logging()
 
 
-def main():
+def main() -> None:
     logger.info("Logging has been set up successfully.")
     logger.info(START_MODULE_MESSAGE + str(__file__))
-    logger.info("Module description: " + MODULE_DESCRIPTION)
+    logger.info(MODULE_DESCRIPTION)
     logger.info(str_object_is_created(logger))
 
 
