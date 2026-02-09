@@ -7,7 +7,7 @@ from core.log.log import logger, START_MODULE_MESSAGE, str_object_is_created
 
 
 
-MODULE_DESCRIPTION = "This module starts the Service A ASGI server"
+MODULE_DESCRIPTION = "This module starts the Service B ASGI server"
 
 
 def main() -> None:

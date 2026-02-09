@@ -22,16 +22,7 @@ if not DEFAULT_ENV.exists():
     logger.warning(f".env file not found at: {DEFAULT_ENV}")
 
 class Config(BaseSettings):
-    SERVICE_NAME: str = Field(default="service-a")
-    SERVICE_B_URL: str = Field(
-        default="http://service-b",
-        validation_alias=AliasChoices(
-            "SERVICE_B_URL",
-            "SERVICE_B__URL",
-            "ServiceB__Url",
-            "ServiceB__URL",
-        ),
-    )
+    SERVICE_NAME: str = Field(default="service-b")
     OPENTELEMETRY_ENDPOINT: str = Field(
         default="http://otel-collector:4317",
         validation_alias=AliasChoices(
