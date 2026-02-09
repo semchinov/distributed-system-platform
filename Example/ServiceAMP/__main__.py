@@ -13,8 +13,6 @@ MODULE_DESCRIPTION = "This module starts the Service A ASGI server"
 def main() -> None:
     logger.info(START_MODULE_MESSAGE + str(__file__))
     logger.info(MODULE_DESCRIPTION)
-    logger.info(str_object_is_created(main))
-    logger.info("Starting Service A (Python)")
     uvicorn.run(
         "api.app:app",
         host=settings.HOST,

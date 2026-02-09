@@ -15,7 +15,7 @@ MODULE_DESCRIPTION = "This module stores configuration and environment settings"
 
 _THIS_FILE = Path(__file__).resolve()
 ROOT_DIR = _THIS_FILE.parents[1]  # /config/settings.py -> config -> root
-DEFAULT_ENV = ROOT_DIR / ".env"  # root/.env
+DEFAULT_ENV = ROOT_DIR / ".env"   # root/.env
 ENV_FILE = str(DEFAULT_ENV) if DEFAULT_ENV.exists() else ".env"
 
 if not DEFAULT_ENV.exists():

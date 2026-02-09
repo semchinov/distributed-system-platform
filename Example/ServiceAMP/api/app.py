@@ -37,7 +37,7 @@ app = create_app()
 def main() -> None:
     logger.info(START_MODULE_MESSAGE + str(__file__))
     logger.info(MODULE_DESCRIPTION)
-    logger.info(str_object_is_created(create_app))
+    logger.info(str_object_is_created(app))
 
 
 if __name__ != "__main__":
