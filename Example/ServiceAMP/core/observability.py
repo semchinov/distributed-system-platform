@@ -23,6 +23,7 @@ from core.log.log import (
 
 MODULE_DESCRIPTION = "This module configures telemetry for the application"
 
+
 _telemetry_configured = False
 
 
