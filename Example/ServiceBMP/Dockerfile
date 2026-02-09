@@ -1,17 +1,19 @@
 FROM python:3.12-slim AS build
 WORKDIR /src
 
+RUN pip install --no-cache-dir poetry
+
 COPY pyproject.toml poetry.lock ./
-RUN pip install --no-cache-dir poetry \
-    && poetry export --format requirements.txt --without-hashes --output requirements.txt \
-    && pip install --no-cache-dir --prefix=/install -r requirements.txt
+
+RUN poetry config virtualenvs.create false \
+    && poetry install --only main --no-root --no-interaction --no-ansi
 
 COPY . .
 
 FROM python:3.12-slim
 WORKDIR /app
 
-COPY --from=build /install /usr/local
+COPY --from=build /usr/local /usr/local
 COPY --from=build /src /app
 
 ENV PYTHONUNBUFFERED=1
