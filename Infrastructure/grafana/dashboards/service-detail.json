@@ -1474,13 +1474,13 @@
           "type": "prometheus",
           "uid": "prometheus"
         },
-        "definition": "label_values(http_server_request_duration_seconds_count, service_name)",
+        "definition": "label_values(target_info, service_name)",
         "includeAll": false,
         "label": "Service",
         "name": "service",
         "options": [],
         "query": {
-          "query": "label_values(http_server_request_duration_seconds_count, service_name)",
+          "query": "label_values(target_info, service_name)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 2,
