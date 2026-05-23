@@ -15,7 +15,7 @@ services:
 
   service-b:
     build:
-      context: ./ServiceB
+      context: ./ServiceBMP
       dockerfile: Dockerfile
     container_name: service-b
     ports:
