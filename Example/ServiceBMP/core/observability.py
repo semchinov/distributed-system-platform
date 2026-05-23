@@ -21,6 +21,7 @@ MODULE_DESCRIPTION = "This module configures telemetry for the application"
 
 
 _telemetry_configured = False
+_delivery_messages_received_counter = None
 
 
 def setup_telemetry(endpoint: str, service_name: str) -> None:
@@ -61,6 +62,24 @@ def instrument_app(app: FastAPI) -> None:
         :returns None
     """
     FastAPIInstrumentor.instrument_app(app)
+
+
+def get_delivery_messages_received_counter():
+    """
+    Return a singleton counter instrument for delivery_messages_received_total.
+    Safe to call multiple times; the counter will be created once.
+    """
+    global _delivery_messages_received_counter
+    if _delivery_messages_received_counter is not None:
+        return _delivery_messages_received_counter
+
+    meter = metrics.get_meter(__name__)
+    counter = meter.create_counter(
+        "delivery_messages_received_total",
+        description="Total number of delivery messages received",
+    )
+    _delivery_messages_received_counter = counter
+    return _delivery_messages_received_counter
 
 
 def main() -> None:
