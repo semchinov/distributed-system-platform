@@ -43,6 +43,14 @@ class Config(BaseSettings):
     HOST: str = Field(default="0.0.0.0")
     BACKEND_PORT: int = Field(default=80, validation_alias=AliasChoices("PORT", "BACKEND_PORT"))
 
+    # Delivery scenario and retry settings for ServiceAMP (sender)
+    DELIVERY_SCENARIO: str = Field(
+        default="no_checks",
+    )
+    DELIVERY_MAX_ATTEMPTS: int = Field(default=3)
+    DELIVERY_REQUEST_TIMEOUT_SECONDS: float = Field(default=1.0)
+    DELIVERY_RETRY_BACKOFF_SECONDS: float = Field(default=0.2)
+
     model_config = SettingsConfigDict(
         env_file=ENV_FILE,
         env_file_encoding="utf-8",
