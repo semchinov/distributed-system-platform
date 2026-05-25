@@ -54,10 +54,3 @@ grafana-data/
 # Temporary files
 tmp/
 temp/
-
-# Logs by python
-!Example/ServiceAMP/core/log/
-!Example/ServiceAMP/core/log/*.py
-
-# python .env
-/Example/ServiceAMP/.env
