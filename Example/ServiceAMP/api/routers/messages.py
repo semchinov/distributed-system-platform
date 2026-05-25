@@ -69,7 +69,7 @@ async def message_a() -> Response:
     # Increment delivery_messages_sent_total immediately
     try:
         counter = get_delivery_messages_sent_counter()
-        counter.add(1, {"service_name": settings.SERVICE_NAME, "message_id": message_id})
+        counter.add(1, {"message_id": message_id})
         logger.info(f"Incremented delivery_messages_sent_total for message_id={message_id}")
     except Exception as exc:
         logger.warning(f"Failed to increment delivery_messages_sent_total: {exc}")
